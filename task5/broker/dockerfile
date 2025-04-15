@@ -1,0 +1,14 @@
+# Use OpenJDK as the base image
+FROM openjdk:21-jdk-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the broker JAR file into the container
+COPY target/broker-3.4.3.jar /app/broker.jar
+
+# Expose the port for broker (mapped to the host)
+EXPOSE 8080
+
+# Command to run the broker service
+ENTRYPOINT ["java", "-jar", "broker.jar"]

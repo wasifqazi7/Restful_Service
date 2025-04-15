@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  auldfellas-service:
+    build:
+      context: ./auldfellas
+      dockerfile: dockerfile
+
+  girlsallowed-service:
+    build:
+      context: ./girlsallowed
+      dockerfile: dockerfile
+
+  dodgygeezer-service:
+    build:
+      context: ./dodgygeezers
+      dockerfile: dockerfile
+
+  broker-service:
+    build:
+      context: ./broker
+      dockerfile: dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - auldfellas-service
+      - dodgygeezer-service
+      - girlsallowed-service

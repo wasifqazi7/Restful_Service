@@ -1,0 +1,14 @@
+# Use a base image that has JDK installed
+FROM openjdk:21-jdk-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the Maven build artifact (assuming you're building the application with Maven)
+COPY target/auldfellas-0.0.1.jar /app/auldfellas.jar
+
+# Expose the port the application will run on
+EXPOSE 8081
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "auldfellas.jar"]

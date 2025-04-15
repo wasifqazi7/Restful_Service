@@ -1,0 +1,14 @@
+# Use OpenJDK as the base image
+FROM openjdk:21-jdk-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the girlsallowed JAR file into the container
+COPY target/girlsallowed-3.4.3.jar /app/girlsallowed.jar
+
+# Expose the internal port (not exposed to the host machine)
+EXPOSE 8083
+
+# Command to run the girlsallowed service
+ENTRYPOINT ["java", "-jar", "girlsallowed.jar"]
